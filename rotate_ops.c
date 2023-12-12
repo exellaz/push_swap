@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:57:34 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/11 16:55:05 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:29:53 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	rotate(t_stack **stack)
 {
 	t_stack	*last_node;
 
-	if (!stack || !(*stack)->next)
+	if (!(*stack) || !(*stack)->next)
 		return ;
 	last_node = ft_lstlast(*stack);
-	last_node->next = *stack;
 	*stack = (*stack)->next;
-	last_node->next->next = 0;
+	(*stack)->prev = NULL;
+	last_node->next = *stack;
+	last_node->next->prev = last_node;
+	last_node->next->next = NULL;
 }
 
 void	ra(t_stack **a, int print)
