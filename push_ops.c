@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:15:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/11 17:33:01 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2023/12/15 12:43:18 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ void	pa(t_stack **a, t_stack **b, int print)
 {
 	push(a, b);
 	if (print)
-		ft_printf("pa\n");
+		printf("pa\n");
 }
 
 void	pb(t_stack **b, t_stack **a, int print)
 {
 	push(b, a);
 	if (print)
-		ft_printf("pa\n");
+		printf("pb\n");
 }
