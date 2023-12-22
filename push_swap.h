@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:37 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/19 12:09:20 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2023/12/22 16:11:52 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
+
+typedef struct s_data
+{
+	t_stack	**a;
+	t_stack	**b;
+	int		size_a;
+	int		size_b;
+	int		total_size;
+}	t_data;
 
 void	init_stack_a(t_stack **a, char **av);
 void	append_node(t_stack **stack, int nbr);

@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:20 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/17 13:35:46 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2023/12/21 14:31:05 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*find_last(t_stack *node)
 
 void	append_node(t_stack **stack, int nbr)
 {
-	t_stack *node;
+	t_stack	*node;
 	t_stack	*last_node;
 
 	if (!stack)
