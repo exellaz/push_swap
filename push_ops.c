@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:15:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/15 12:43:18 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2023/12/29 01:26:55 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,35 @@ void	push(t_stack **dst, t_stack **src)
 	}
 }
 
-void	pa(t_stack **a, t_stack **b, int print)
+// void	pa(t_stack **a, t_stack **b, int print)
+// {
+// 	push(a, b);
+// 	if (print)
+// 		printf("pa\n");
+// }
+
+// void	pb(t_stack **b, t_stack **a, int print)
+// {
+// 	push(b, a);
+// 	if (print)
+// 		printf("pb\n");
+// }
+
+void	pa(t_data *data, int print)
 {
-	push(a, b);
+	// printf("PB: %d\n", (*data->b)->value);
+	push(data->a, data->b);
+	data->size_a++;
+	data->size_b--;
 	if (print)
 		printf("pa\n");
 }
 
-void	pb(t_stack **b, t_stack **a, int print)
+void	pb(t_data *data, int print)
 {
-	push(b, a);
+	push(data->b, data->a);
+	data->size_a--;
+	data->size_b++;
 	if (print)
 		printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:57:20 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/14 13:18:11 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/04 14:59:05 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,25 @@ void	swap(t_stack **node)
 		second->next->prev = first;
 	first->prev = second;
 	second->prev = NULL;
-	second->next = first;
+	first->next = second->next;
+	if (second->next)
+        second->next = first->next->prev;
+    else
+        second->next = first;
 	*node = second;
 }
 
 void	sa(t_stack **a, int print)
 {
 	swap(a);
-	if (!print)
+	if (print)
 		printf("sa\n");
 }
 
 void	sb(t_stack **b, int print)
 {
 	swap(b);
-	if (!print)
+	if (print)
 		printf("sb\n");
 }
 
@@ -47,6 +51,6 @@ void	ss(t_stack **a, t_stack **b, int print)
 {
 	swap(a);
 	swap(b);
-	if (!print)
+	if (print)
 		printf("ss\n");
 }

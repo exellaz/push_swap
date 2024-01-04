@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:14:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/26 18:12:37 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:03:05 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,34 +117,14 @@ int	find_smallest(t_stack *stack)
 
 void	pre_sort(t_data *data)
 {
-	int	i;
 	int	*temp_array;
 	t_stack *stack;
 	int index;
 
-	i = 0;
 	stack = *data->a;
 	temp_array = malloc(sizeof(int) * data->size_a);
 	stack_to_array(stack, temp_array);
 	quicksort(temp_array, 0, data->size_a - 1);
-
-    for (int z = 0; z < data->size_a; z++) {
-        printf("%d ", temp_array[z]);
-    }
-    printf("\n");
-	i = 0;
-	// while (stack != NULL)
-	// {
-	// 	if (stack->value == temp_array[i])
-	// 	{
-	// 		stack->value = i;
-	// 		i = -1;
-	// 	}
-	// 	if (i == -1)
-	// 		stack = stack->next;
-	// 	i++;
-	// }
-
 	while (stack != NULL)
 	{
 		index = binary_search(temp_array, 0, data->size_a - 1, stack->value);
@@ -155,7 +135,7 @@ void	pre_sort(t_data *data)
 		stack = stack->next;
 	}
 	free(temp_array);
-	printList(*data->a);
+	// printList(*data->a);
 }
 
 void	stack_to_array(t_stack *stack, int *array)
@@ -181,7 +161,7 @@ int binary_search(int *array, int left, int right, int key)
 	mid = 0;
     while (left <= right)
 	{
-		printf("Once\n");
+		// printf("Once\n");
 		mid = left + ((right - left) / 2);
         if (array[mid] == key)
             return (mid);
@@ -192,3 +172,137 @@ int binary_search(int *array, int left, int right, int key)
     }
     return (-1);
 }
+
+void	make_chunks(t_data *data, int chunk_size, int n, int pb_count)
+{
+	while (data->size_a)
+	{
+		if ((*data->a)->value < (chunk_size * n))
+		{
+			pb(data, 1);
+			if ((*data->b)->value < chunk_size * n - (chunk_size / 2))
+				rb(data->b, 1);
+			pb_count++;
+		}
+		else
+			ra(data->a, 1);
+		if ((pb_count == chunk_size * n) && (chunk_size * n < data->total_size))
+			n++;
+	}
+}
+
+void	sort_back(t_data *data)
+{
+	t_stack	*stack;
+	int	*sorted_array;
+
+	stack = (*data->b);
+	sorted_array = malloc(sizeof(int) * data->size_b);
+	stack_to_array(*data->b, sorted_array);
+	// printf("%d\n", (*data->b)->value);
+	quicksort(sorted_array, 0, data->size_b - 1);
+	while (data->size_b != 0)
+	{
+		// printf("test");
+		if (quick_rotate(data, sorted_array))
+		{
+			pa(data, 1);
+			// printf("test2");
+			if (data->size_b > 1 && (stack->value < (*data->b)->next->value))
+				ss(data->a, data->b, 1);
+			else
+				sa(data->a, 1);
+		}
+		else
+			pa(data, 1);
+	}
+}
+
+int	can_push(t_data *data, int swap, int *sorted_array)
+{
+	// printf("value: %d\n", sorted_array[data->size_b - 1]);
+	// printf("value2: %d\n", (*data->b)->value);
+	if ((*data->b)->value == sorted_array[data->size_b - 2] && swap == 0)
+	{
+		// printf("size: %d\n", data->size_b - 1);
+		// printf("test3");
+		pa(data, 1);
+		return (1);
+	}
+	return (0);
+}
+
+int	quick_rotate(t_data *data, int *sorted_array)
+{
+	int	swap;
+	int	size;
+	int	pos;
+	t_stack *head;
+
+	swap = 0;
+	pos = 0;
+	size = data->size_b;
+	head = *data->b;
+	while ((*data->b)->value != size - 1)
+	{
+		*data->b = (*data->b)->next;
+		// printf("value: %d", (*data->b)->value);
+		// printf("size: %d\n", size);
+		pos++;
+	}
+	*data->b = head;
+	while ((*data->b)->value != size - 1)
+	{
+		if (can_push(data, swap, sorted_array) == 0)
+		{
+			if (pos < size / 2)
+				rb(data->b, 1);
+			else
+				rrb(data->b, 1);
+		}
+		else
+			swap = 1;
+	}
+	return (swap);
+}
+
+// int	can_push(t_data *data, int swap)
+// {
+// 	int	*sorted_array;
+
+// 	sorted_array = malloc(sizeof(int) * data->size_b);
+// 	stack_to_array(*data->b, sorted_array);
+// 	quicksort(sorted_array, 0, data->size_b);
+// 	if ((*data->b)->value == sorted_array[data->size_b - 2] && swap == 0)
+// 	{
+// 		// printf("size: %d\n", data->size_b - 2);
+// 		pa(data, 1);
+// 		return (1);
+// 	}
+// 	return (0);
+// }
+
+// void	sort_back(t_data *data)
+// {
+// 	t_stack	*stack;
+// 	int	*sorted_array;
+
+// 	stack = *data->b;
+// 	sorted_array = malloc(sizeof(int) * data->size_b);
+// 	stack_to_array(*data->b, sorted_array);
+// 	// printf("%d\n", (*data->b)->value);
+// 	quicksort(sorted_array, 0, data->size_b - 1);
+// 	while (data->size_b != 0)
+// 	{
+// 		if (quick_rotate(data, sorted_array))
+// 		{
+// 			pa(data, 1);
+// 			if (data->size_b > 1 && stack->value < stack->next->value)
+// 				ss(data->a, data->b, 1);
+// 			else
+// 				sa(data->a, 1);
+// 		}
+// 		else
+// 			pa(data, 1);
+// 	}
+// }

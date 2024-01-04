@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:37 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/26 17:46:56 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2023/12/30 10:28:23 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	sa(t_stack **a, int print);
 void	sb(t_stack **b, int print);
 void	ss(t_stack **a, t_stack **b, int print);
 void	push(t_stack **dst, t_stack **src);
-void	pa(t_stack **a, t_stack **b, int print);
-void	pb(t_stack **b, t_stack **a, int print);
+void	pa(t_data *data, int print);
+void	pb(t_data *data, int print);
 void	insertion_sort(t_stack **a, t_stack **b);
 int	find_stack_size(t_stack *stack);
 int	find_smallest(t_stack *stack);
@@ -64,5 +64,12 @@ int	partition(int *array, int low, int high);
 void	ft_swap(int *a, int *b);
 void	stack_to_array(t_stack *stack, int *array);
 int binary_search(int *array, int left, int right, int key);
+void    make_chunks(t_data *data, int chunk_size, int n, int pb_count);
+void	sort_back(t_data *data);
+int	can_push(t_data *data, int swap, int *sorted_array);
+int	quick_rotate(t_data *data, int *sorted_array);
+// int	can_push(t_data *data, int swap);
+
+
 
 #endif

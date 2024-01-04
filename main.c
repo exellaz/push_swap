@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:26:43 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/26 14:47:50 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/04 15:13:52 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,22 @@ int	main(int ac, char **av)
 	b = NULL;
 	data->a = &a;
 	data->b = &b;
-	data->size_a = 10;
+	data->size_a = 100;
 	data->size_b = 0;
-	data->total_size = 10;
+	data->total_size = 100;
 	if (ac > 1)
 	{
 		init_stack_a(&a, av);
 	}
 	pre_sort(data);
-	printList(a);
+	// // printList(a);
+	make_chunks(data, data->total_size / 4, 1, 0);
+	// pa(data, 1);
+	// pa(data, 1);
+	// printList(a);
+	// printList(b);
+	// ss(data->a, data->b, 1);
+	sort_back(data);
+	// printList(a);
+	// printList(b);
 }
