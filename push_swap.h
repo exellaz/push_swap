@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:37 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2023/12/30 10:28:23 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/11 22:02:44 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_data
 	int		total_size;
 }	t_data;
 
-void	init_stack_a(t_stack **a, char **av);
+void	init_stack_a(t_stack **a, int ac, char **av);
 void	append_node(t_stack **stack, int nbr);
 t_stack	*find_last(t_stack *node);
 void printList(const t_stack *head);
