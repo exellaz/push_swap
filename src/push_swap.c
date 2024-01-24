@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:26:43 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/23 12:20:08 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:06:37 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,20 @@ int	main(int ac, char **av)
 		init_struct(data, &a, &b, size);
 		do_sort(data);
 		// free_all(data);
-		free(data);
+		// free(data);
 	}
 	return (0);
+}
+
+void printList(const t_stack *head)
+{
+    const t_stack *current = head;
+
+    while (current != NULL)
+    {
+        printf("%d ", current->value);
+        current = current->next;
+    }
+
+    printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:37 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/23 01:39:32 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:24:55 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	rotate(t_stack **stack);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_data *data);
-void	swap(t_stack **stack);
+// void	swap(t_stack **stack);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_data *data);
@@ -83,5 +83,6 @@ int	is_sorted(t_stack **stack);
 int	check_dupe(char **av);
 void	do_sort(t_data *data);
 void	free_all(t_data *data);
+// void	swap(t_stack **head);
 
 #endif

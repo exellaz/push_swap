@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 01:10:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/23 01:40:54 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:28:03 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ int	find_pos(t_stack *stack, int target)
 	int	pos;
 
 	pos = 0;
-	while ((stack)->value != target)
+	while (stack->value != target && (stack))
 	{
 		stack = (stack)->next;
+		// printf("Hi %d, stack value: %d\n", pos, stack->value);
 		pos++;
 	}
 	return (pos);

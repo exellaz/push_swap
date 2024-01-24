@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:14:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/23 01:16:02 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:34:41 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,17 @@ int	can_push(t_data *data, int swap, int *sorted_array)
 int	quick_rotate(t_data *data, int *sorted_array)
 {
 	int	swap;
-	int target;
+	int	target;
 	int	pos;
 
+	if (!sorted_array)
+		return (0);
 	swap = 0;
 	target = data->size_b - 1;
+	// printList((*data->b));
+	// printf("target: %d\n", target);
 	pos = find_pos((*data->b), target);
+	// printf("pos: %d\n", pos);
 	while ((*data->b)->value != target)
 	{
 		if (can_push(data, swap, sorted_array) == 0)
@@ -65,10 +70,8 @@ int	quick_rotate(t_data *data, int *sorted_array)
 }
 void	sort_back(t_data *data)
 {
-	t_stack	*stack;
 	int	*sorted_array;
 
-	stack = (*data->b);
 	sorted_array = malloc(sizeof(int) * data->size_b);
 	stack_to_array(*data->b, sorted_array);
 	quicksort(sorted_array, 0, data->size_b - 1);
@@ -77,19 +80,25 @@ void	sort_back(t_data *data)
 		if (quick_rotate(data, sorted_array))
 		{
 			pa(data);
-			if (data->size_b > 1 && (stack->value < (*data->b)->next->value))
+			// sb(data->b);
+			if (data->size_b > 1 && (*data->b)->value < (*data->b)->next->value)
 				ss(data);
+				// printf("hi");
 			else
 				sa(data->a);
+				// printf("hi2");
 		}
 		else
+		{
 			pa(data);
+			// printList(*data->b);
+		}
 	}
 }
 
 void	sort_big(t_data *data)
 {
 	pre_sort(data);
-	partition_in_b(data, (data->total_size / 20) + 25, 1, 0);
+	partition_in_b(data, (data->total_size / 20) + 30, 1, 0);
 	sort_back(data);
 }
