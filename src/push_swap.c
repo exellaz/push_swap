@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:26:43 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/18 15:15:31 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:20:08 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,15 @@ int	main(int ac, char **av)
 		a = NULL;
 		b = NULL;
 		data = malloc(sizeof(t_data));
-		size = init_stack_a(&a, ac, av);
+		if (check_input(get_input(ac, av)))
+			return (write(2, "Error\n", 6));
+		size = init_stack_a(&a, get_input(ac, av));
+		if (is_sorted(&a))
+			return (1);
 		init_struct(data, &a, &b, size);
-		pre_sort(data);
-		partition_in_b(data, (data->total_size / 20) + 25, 1, 0);
-		sort_back(data);
+		do_sort(data);
+		// free_all(data);
+		free(data);
 	}
+	return (0);
 }

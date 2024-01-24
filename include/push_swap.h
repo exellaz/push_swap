@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:37 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/18 22:06:03 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/23 01:39:32 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_data
 	int		total_size;
 }	t_data;
 
-int		init_stack_a(t_stack **a, int ac, char **av);
 void	append_node(t_stack **stack, int nbr);
 t_stack	*find_last(t_stack *node);
 void printList(const t_stack *head);
@@ -55,7 +54,6 @@ void	ss(t_data *data);
 void	push(t_stack **dst, t_stack **src);
 void	pa(t_data *data);
 void	pb(t_data *data);
-void	insertion_sort(t_stack **a, t_stack **b);
 int	find_stack_size(t_stack *stack);
 int	find_smallest(t_stack *stack);
 void	pre_sort(t_data *data);
@@ -68,10 +66,22 @@ void    partition_in_b(t_data *data, int partition_size, int n, int pb_count);
 void	sort_back(t_data *data);
 int	can_push(t_data *data, int swap, int *sorted_array);
 int	quick_rotate(t_data *data, int *sorted_array);
-int	find_pos(t_stack **stack, int target);
+int	find_pos(t_stack *stack, int target);
 void	init_struct(t_data *data, t_stack **a, t_stack **b, int size);
-// int	can_push(t_data *data, int swap);
-
-
+void	insertion_sort(int *array, int size);
+void	sort_three(t_stack **a);
+t_stack	*find_max_node(t_stack *stack);
+t_stack	*find_min_node(t_stack *stack);
+void get_three(t_data *data);
+void	sort_small(t_data *data);
+void	sort_big(t_data *data);
+int	check_input(char **av);
+int	init_stack_a(t_stack **a, char **input);
+char	**get_input(int ac, char **av);
+void printStringList(char **strings);
+int	is_sorted(t_stack **stack);
+int	check_dupe(char **av);
+void	do_sort(t_data *data);
+void	free_all(t_data *data);
 
 #endif
