@@ -6,7 +6,7 @@
 #    By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:12:39 by kkhai-ki          #+#    #+#              #
-#    Updated: 2024/01/23 01:34:57 by kkhai-ki         ###   ########.fr        #
+#    Updated: 2024/02/04 13:37:43 by kkhai-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC_FILES =	push_swap		\
 			push_ops		\
 			swap_ops		\
 			rotate_ops		\
-			rev_rotate_ops
+			rev_rotate_ops	\
+			free			
 
 SRC = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
 

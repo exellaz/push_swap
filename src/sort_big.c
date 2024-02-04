@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 13:14:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/24 22:34:41 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:39:23 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	partition_in_b(t_data *data, int partition_size, int n, int pb_count)
 		}
 		else
 			ra(data->a);
-		if ((pb_count == partition_size * n) && (partition_size * n < data->total_size))
+		if ((pb_count == partition_size * n)
+			&& (partition_size * n < data->total_size))
 			n++;
 	}
 }
@@ -50,10 +51,7 @@ int	quick_rotate(t_data *data, int *sorted_array)
 		return (0);
 	swap = 0;
 	target = data->size_b - 1;
-	// printList((*data->b));
-	// printf("target: %d\n", target);
 	pos = find_pos((*data->b), target);
-	// printf("pos: %d\n", pos);
 	while ((*data->b)->value != target)
 	{
 		if (can_push(data, swap, sorted_array) == 0)
@@ -68,6 +66,7 @@ int	quick_rotate(t_data *data, int *sorted_array)
 	}
 	return (swap);
 }
+
 void	sort_back(t_data *data)
 {
 	int	*sorted_array;
@@ -80,20 +79,15 @@ void	sort_back(t_data *data)
 		if (quick_rotate(data, sorted_array))
 		{
 			pa(data);
-			// sb(data->b);
 			if (data->size_b > 1 && (*data->b)->value < (*data->b)->next->value)
 				ss(data);
-				// printf("hi");
 			else
 				sa(data->a);
-				// printf("hi2");
 		}
 		else
-		{
 			pa(data);
-			// printList(*data->b);
-		}
 	}
+	free(sorted_array);
 }
 
 void	sort_big(t_data *data)

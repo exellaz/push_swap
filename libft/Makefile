@@ -6,7 +6,7 @@
 #    By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:12:39 by kkhai-ki          #+#    #+#              #
-#    Updated: 2024/01/23 01:04:14 by kkhai-ki         ###   ########.fr        #
+#    Updated: 2024/01/31 22:57:10 by kkhai-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRC_FILES =	ft_isalpha			\
 			ft_memcmp			\
 			ft_strnstr			\
 			ft_atoi				\
+			ft_atol				\
 			ft_calloc			\
 			ft_strdup			\
 			ft_substr			\

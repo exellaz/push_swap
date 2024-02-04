@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 01:12:49 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/24 17:36:51 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:44:39 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ void	sort_three(t_stack **a)
 		rra(a);
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
-
 }
 
-void get_three(t_data *data)
+void	get_three(t_data *data)
 {
 	t_stack	*min_node;
-	int	target;
+	int		target;
 	int		pos;
 
 	while (data->size_a != 3)

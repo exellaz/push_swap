@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:19:20 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/23 01:22:09 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:17:50 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	append_node(t_stack **stack, int nbr)
 	}
 }
 
-int	init_stack_a(t_stack **a, char **input)
+int	init_stack_a(t_stack **a, char **input, int ac)
 {
 	int	nbr;
 	int	i;
@@ -48,6 +48,8 @@ int	init_stack_a(t_stack **a, char **input)
 		nbr = ft_atoi(input[i++]);
 		append_node(a, nbr);
 	}
+	if (ac == 2)
+		free_arrays(input);
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 01:10:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/24 22:28:03 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:37:17 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	find_pos(t_stack *stack, int target)
 	while (stack->value != target && (stack))
 	{
 		stack = (stack)->next;
-		// printf("Hi %d, stack value: %d\n", pos, stack->value);
 		pos++;
 	}
 	return (pos);
@@ -28,8 +27,8 @@ int	find_pos(t_stack *stack, int target)
 
 t_stack	*find_max_node(t_stack *stack)
 {
-	int	max;
-	t_stack *max_node;
+	int		max;
+	t_stack	*max_node;
 
 	max = INT_MIN;
 	while (stack)
@@ -46,8 +45,8 @@ t_stack	*find_max_node(t_stack *stack)
 
 t_stack	*find_min_node(t_stack *stack)
 {
-	int	min;
-	t_stack *min_node;
+	int		min;
+	t_stack	*min_node;
 
 	min = INT_MAX;
 	while (stack)
@@ -70,10 +69,3 @@ t_stack	*find_last(t_stack *node)
 		node = node->next;
 	return (node);
 }
-
-// void	free_all(t_data *data)
-// {
-// 	free(data->a);
-// 	free(data->b);
-// 	free(data);
-// }

@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:37 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/24 17:24:55 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:54:17 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include "../libft/include/libft.h"
 
 typedef struct s_stack
@@ -36,53 +35,67 @@ typedef struct s_data
 	int		total_size;
 }	t_data;
 
-void	append_node(t_stack **stack, int nbr);
+/*Validate Input*/
+char	**get_input(int ac, char **av);
+int		check_digit(char **av);
+int		is_sorted(t_stack **stack);
+int		check_dupe(char **av);
+
+/*Stack Functions*/
+t_stack	*find_max_node(t_stack *stack);
+t_stack	*find_min_node(t_stack *stack);
 t_stack	*find_last(t_stack *node);
-void printList(const t_stack *head);
+int		init_stack_a(t_stack **a, char **input, int ac);
+void	init_struct(t_data *data, t_stack **a, t_stack **b, int size);
+void	append_node(t_stack **stack, int nbr);
+
+/*Reverse Rotate*/
 void	rev_rotate(t_stack **stack);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_data *data);
+
+/*Rotate*/
 void	rotate(t_stack **stack);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_data *data);
-// void	swap(t_stack **stack);
+
+/*Swap*/
+void	swap(t_stack **stack);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_data *data);
+
+/*Push*/
 void	push(t_stack **dst, t_stack **src);
 void	pa(t_data *data);
 void	pb(t_data *data);
-int	find_stack_size(t_stack *stack);
-int	find_smallest(t_stack *stack);
-void	pre_sort(t_data *data);
+
+/*Quicksort*/
+int		partition(int *array, int low, int high);
 void	quicksort(int *array, int low, int high);
-int	partition(int *array, int low, int high);
-void	ft_swap(int *a, int *b);
+
+/*Sort Big*/
+int		binary_search(int *array, int left, int right, int key);
+int		can_push(t_data *data, int swap, int *sorted_array);
+int		quick_rotate(t_data *data, int *sorted_array);
+int		find_pos(t_stack *stack, int target);
+void	pre_sort(t_data *data);
 void	stack_to_array(t_stack *stack, int *array);
-int binary_search(int *array, int left, int right, int key);
-void    partition_in_b(t_data *data, int partition_size, int n, int pb_count);
+void	partition_in_b(t_data *data, int partition_size, int n, int pb_count);
 void	sort_back(t_data *data);
-int	can_push(t_data *data, int swap, int *sorted_array);
-int	quick_rotate(t_data *data, int *sorted_array);
-int	find_pos(t_stack *stack, int target);
-void	init_struct(t_data *data, t_stack **a, t_stack **b, int size);
-void	insertion_sort(int *array, int size);
-void	sort_three(t_stack **a);
-t_stack	*find_max_node(t_stack *stack);
-t_stack	*find_min_node(t_stack *stack);
-void get_three(t_data *data);
-void	sort_small(t_data *data);
-void	sort_big(t_data *data);
-int	check_input(char **av);
-int	init_stack_a(t_stack **a, char **input);
-char	**get_input(int ac, char **av);
-void printStringList(char **strings);
-int	is_sorted(t_stack **stack);
-int	check_dupe(char **av);
 void	do_sort(t_data *data);
+void	sort_big(t_data *data);
+
+/*Sort Small*/
+void	get_three(t_data *data);
+void	sort_three(t_stack **a);
+void	sort_small(t_data *data);
+
+/*Free*/
 void	free_all(t_data *data);
-// void	swap(t_stack **head);
+void	free_stack(t_stack *stack);
+void	free_arrays(char **array);
 
 #endif

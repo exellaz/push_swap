@@ -6,12 +6,12 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:36:53 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/18 15:43:50 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:32:17 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
 # include "libft.h"

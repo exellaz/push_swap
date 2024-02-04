@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:52:57 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/23 01:04:36 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/01/31 22:57:31 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 char	*ft_strdup(const char *s1);
 
 //Part 2

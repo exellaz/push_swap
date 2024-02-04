@@ -6,13 +6,13 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 01:20:40 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/23 01:30:36 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 13:42:46 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_input(char **av)
+int	check_digit(char **av)
 {
 	int	i;
 	int	j;
@@ -22,10 +22,13 @@ int	check_input(char **av)
 	i = -1;
 	while (av[++i])
 	{
+		if (ft_atol(av[i]) > INT_MAX || ft_atol(av[i]) < INT_MIN)
+			return (1);
 		j = 0;
 		while (av[i][j])
 		{
-			if (av[i][j] == '-' || av[i][j] == '+' || ft_isdigit(av[i][j]))
+			if ((av[i][j] == '-' || av[i][j] == '+')
+				&& ft_isdigit(av[i][j + 1]))
 				j++;
 			while (ft_isdigit(av[i][j]))
 				j++;
@@ -46,7 +49,7 @@ int	check_dupe(char **av)
 	{
 		j = i;
 		while (av[++j])
-			if (!ft_strcmp(av[i], av[j]))
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
 				return (1);
 	}
 	return (0);
@@ -56,21 +59,21 @@ char	**get_input(int ac, char **av)
 {
 	char	**numbers;
 
-	if (ac == 2)
+	if (ac == 2 && av[1][0] != 0)
 	{
 		numbers = ft_split(av[1], ' ');
-		if (!check_input(numbers) && !check_dupe(numbers))
+		if (!check_digit(numbers) && !check_dupe(numbers))
 			return (numbers);
 	}
-	else
-		if (!check_input(av + 1) && !check_dupe(av + 1))
+	else if (ac > 2 && av[1][0] != 0)
+		if (!check_digit(av + 1) && !check_dupe(av + 1))
 			return (av + 1);
 	return (0);
 }
 
 int	is_sorted(t_stack **stack)
 {
-	t_stack *head;
+	t_stack	*head;
 
 	head = *stack;
 	while ((*stack)->next)
@@ -82,6 +85,6 @@ int	is_sorted(t_stack **stack)
 		}
 		*stack = (*stack)->next;
 	}
-	*stack = head;
+	free_stack(head);
 	return (1);
 }
