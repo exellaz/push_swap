@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_checker.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 16:26:43 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/04 22:51:13 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/04 22:53:14 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	main(int ac, char **av)
 {
@@ -28,12 +28,10 @@ int	main(int ac, char **av)
 		if (!input)
 			return (write(2, "Error\n", 6));
 		size = init_stack_a(&a, input, ac);
-		if (is_sorted(&a))
-			return (0);
 		data = malloc(sizeof(t_data));
 		init_struct(data, &a, &b, size);
-		do_sort(data);
-		free_all(data);
+		check_instructions(data);
+		free(data);
 	}
 	return (0);
 }
