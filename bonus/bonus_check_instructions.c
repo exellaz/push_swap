@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 20:20:20 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/04 23:10:27 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/05 17:10:09 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	check_instructions(t_data *data)
 		free(temp);
 		if (error != 0)
 			return ;
+		free(instruction);
 		instruction = get_next_line(STDIN_FILENO);
 	}
-	free(instruction);
 	if (is_sorted(data->a) && data->size_b == 0)
 		ft_printf("OK\n");
 	else

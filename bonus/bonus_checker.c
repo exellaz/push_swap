@@ -1,49 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   push_swap_checker.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 13:36:47 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/04 22:38:03 by kkhai-ki         ###   ########.fr       */
+/*   Created: 2023/12/12 16:26:43 by kkhai-ki          #+#    #+#             */
+/*   Updated: 2024/02/05 16:53:18 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	free_stack(t_stack *stack)
+int	main(int ac, char **av)
 {
-	t_stack	*current;
-	t_stack	*next;
+	t_stack	*a;
+	t_stack	*b;
+	t_data	*data;
+	char	**input;
+	int		size;
 
-	current = stack;
-	while (current)
+	if (ac > 1)
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		a = NULL;
+		b = NULL;
+		input = get_input(ac, av);
+		if (!input)
+			return (write(2, "Error\n", 6));
+		size = init_stack_a(&a, input, ac);
+		data = malloc(sizeof(t_data));
+		init_struct(data, &a, &b, size);
+		check_instructions(data);
+		free(data);
 	}
-}
-
-void	free_all(t_data *data)
-{
-	if (data->a != NULL)
-		free_stack(*data->a);
-	if (data->b != NULL)
-		free_stack(*data->b);
-	free(data);
-}
-
-void	free_arrays(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
+	return (0);
 }

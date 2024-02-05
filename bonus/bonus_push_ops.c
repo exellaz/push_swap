@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:15:50 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/04 22:29:59 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/02/05 16:15:28 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,19 @@ void	push(t_stack **dst, t_stack **src)
 void	pa(t_data *data)
 {
 	push(data->a, data->b);
-	data->size_a++;
-	data->size_b--;
+	if (data->size_b > 0)
+	{
+		data->size_a++;
+		data->size_b--;
+	}
 }
 
 void	pb(t_data *data)
 {
 	push(data->b, data->a);
-	data->size_a--;
-	data->size_b++;
+	if (data->size_a > 0)
+	{
+		data->size_a--;
+		data->size_b++;
+	}
 }

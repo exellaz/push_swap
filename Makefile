@@ -6,7 +6,7 @@
 #    By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:12:39 by kkhai-ki          #+#    #+#              #
-#    Updated: 2024/02/04 22:11:31 by kkhai-ki         ###   ########.fr        #
+#    Updated: 2024/02/05 17:12:30 by kkhai-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,23 +34,24 @@ SRC_FILES =	push_swap		\
 			rev_rotate_ops	\
 			free
 
-BONUS_SRC_FILES =	push_swap_checker		\
-					check_input				\
-					check_instructions		\
-					free					\
-					init_stack				\
-					push_ops				\
-					rev_rotate_ops			\
-					rotate_ops				\
-					stack_utilities			\
-					swap_ops
+BONUS_SRC_FILES =	bonus_checker					\
+					bonus_check_input				\
+					bonus_check_instructions		\
+					bonus_free						\
+					bonus_init_stack				\
+					bonus_push_ops					\
+					bonus_rev_rotate_ops			\
+					bonus_rotate_ops				\
+					bonus_stack_utilities			\
+					bonus_swap_ops
 
 SRC = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
 BONUS_SRC = $(addprefix $(BONUS_DIR)/, $(addsuffix .c, $(BONUS_SRC_FILES)))
 
 OBJ_DIR = obj
+BONUS_OBJ_DIR = bonus_obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))
-BONUS_OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(BONUS_SRC_FILES)))
+BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR)/, $(addsuffix .o, $(BONUS_SRC_FILES)))
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
@@ -61,14 +62,14 @@ all :
 		make $(NAME)
 
 bonus :
-		mkdir -p $(OBJ_DIR)
+		mkdir -p $(BONUS_OBJ_DIR)
 		make -C libft
 		make $(BONUS_NAME)
 
 $(OBJ_DIR)/%.o:		$(SRC_DIR)/%.c
 					$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(OBJ_DIR)/%.o:		$(BONUS_DIR)/%.c
+$(BONUS_OBJ_DIR)/%.o:		$(BONUS_DIR)/%.c
 					$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) :	$(OBJ)
@@ -82,7 +83,9 @@ clean :
 			make clean -C $(LIBFT_DIR)
 
 fclean:		clean
-			rm -rf $(OBJ_DIR) $(BONUS_NAME)
+			rm -rf $(OBJ_DIR) $(BONUS_OBJ_DIR) $(BONUS_NAME)
 			make fclean -C $(LIBFT_DIR)
 
 re:			fclean all
+
+.PHONY:	clean fclean re all bonus
