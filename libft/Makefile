@@ -6,7 +6,7 @@
 #    By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:12:39 by kkhai-ki          #+#    #+#              #
-#    Updated: 2024/02/04 20:31:21 by kkhai-ki         ###   ########.fr        #
+#    Updated: 2024/03/05 16:09:03 by kkhai-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,6 +71,8 @@ SRC_FILES =	ft_isalpha			\
 			ft_print_ptr		\
 			ft_print_str		\
 			ft_print_unsigned	\
+			ft_flags			\
+			ft_parse_flags		\
 			ft_printf			\
 			get_next_line_utils	\
 			get_next_line

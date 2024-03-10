@@ -6,54 +6,43 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:38:57 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/01/18 15:41:17 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/03/10 15:15:58 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_print_format(va_list args, const char format)
+int	ft_print_format(va_list args, const char format, t_flags *flags)
 {
 	int	len;
 
 	len = 0;
 	if (format == 'c')
-		len += ft_print_char(va_arg(args, int));
+		len += ft_print_cf(va_arg(args, int), flags);
 	else if (format == 's')
-		len += ft_print_str(va_arg(args, char *));
+		len += ft_print_sf(va_arg(args, char *), flags);
 	else if (format == 'p')
-		len += ft_print_ptr(va_arg(args, unsigned long));
+		len += ft_print_ptrf(va_arg(args, unsigned long), flags);
 	else if (format == 'd' || format == 'i')
-		len += ft_print_nbr(va_arg(args, int));
+		len += ft_print_nbrf(va_arg(args, int), flags);
 	else if (format == 'u')
-		len += ft_print_unsigned(va_arg(args, unsigned int));
+		len += ft_print_uintf(va_arg(args, unsigned int), flags);
 	else if (format == 'x' || format == 'X')
-		len += ft_print_hex(va_arg(args, unsigned int), format);
+		len += ft_print_hexf(va_arg(args, unsigned int), format, flags);
 	else if (format == '%')
-		len += ft_print_char('%');
+		len += ft_print_cf('%', flags);
 	return (len);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(const char *format, ...)
 {
-	int		i;
 	int		len;
 	va_list	args;
 
-	i = 0;
-	len = 0;
-	va_start(args, str);
-	while (str[i])
-	{
-		if (str[i] == '%')
-		{
-			len += ft_print_format(args, str[i + 1]);
-			i++;
-		}
-		else
-			len += ft_print_char(str[i]);
-		i++;
-	}
+	if (!format || *format == '\0')
+		return (0);
+	va_start(args, format);
+	len = ft_parsing(format, args);
 	va_end(args);
 	return (len);
 }
