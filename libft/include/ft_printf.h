@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:36:53 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/03/10 15:16:21 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/03/10 15:36:08 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // # if defined (__linux__)
 // #  define NULLPTR "(nil)"
 // # elif defined (__APPLE__)
-// #  define NULLPTR "0x0"
+# define NULLPTR "0x0"
 // # endif
 
 # include <stdarg.h>
