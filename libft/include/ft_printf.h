@@ -6,21 +6,21 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 14:36:53 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/03/10 15:36:08 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:54:15 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-// # if defined (__linux__)
-// #  define NULLPTR "(nil)"
-// # elif defined (__APPLE__)
-# define NULLPTR "0x0"
-// # endif
-
 # include <stdarg.h>
 # include "libft.h"
+
+# ifdef __linux__
+#  define NULLPTR "(nil)"
+# elif __APPLE__
+#  define NULLPTR "0x0"
+# endif
 
 typedef struct s_flags
 {

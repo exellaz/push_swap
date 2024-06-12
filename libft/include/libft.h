@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:52:57 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/04 20:30:36 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:12:00 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_calloc(size_t count, size_t size);
+void	ft_free_s_arr(char **arr);
 
 //String
 size_t	ft_strlen(const char *s);
@@ -58,6 +59,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *nptr);
 long	ft_atol(const char *nptr);
+int		ft_atoi_base(char *str, char *base);
 char	*ft_strdup(const char *s1);
 
 //Part 2

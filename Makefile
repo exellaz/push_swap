@@ -6,12 +6,18 @@
 #    By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:12:39 by kkhai-ki          #+#    #+#              #
-#    Updated: 2024/02/05 17:12:30 by kkhai-ki         ###   ########.fr        #
+#    Updated: 2024/06/12 19:41:11 by kkhai-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 BONUS_NAME = checker
+
+# COLORS
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+ORANGE = \033[0;38;5;166m
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I
@@ -57,34 +63,37 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 all :
-		mkdir -p $(OBJ_DIR)
-		make -C libft
-		make $(NAME)
+		@mkdir -p $(OBJ_DIR)
+		@make -C libft
+		@make $(NAME)
 
 bonus :
-		mkdir -p $(BONUS_OBJ_DIR)
-		make -C libft
-		make $(BONUS_NAME)
+		@mkdir -p $(BONUS_OBJ_DIR)
+		@make -C libft
+		@make $(BONUS_NAME)
 
 $(OBJ_DIR)/%.o:		$(SRC_DIR)/%.c
-					$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+					@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(BONUS_OBJ_DIR)/%.o:		$(BONUS_DIR)/%.c
-					$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+							@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME) :	$(OBJ)
-			$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME)
+			@printf "$(GREEN)push_swap object files created.$(RESET)\n"
+			@$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBFT) -o $(NAME) && echo "$(GREEN)push_swap created.$(RESET)"
 
 $(BONUS_NAME):	$(BONUS_OBJ)
-				$(CC) $(CFLAGS) $(INCLUDE) $(BONUS_OBJ) $(LIBFT) -o $(BONUS_NAME)
+				@printf "$(GREEN)checker object files created.$(RESET)\n"
+				@$(CC) $(CFLAGS) $(INCLUDE) $(BONUS_OBJ) $(LIBFT) -o $(BONUS_NAME) && echo "$(GREEN)checker created.$(RESET)"
 
 clean :
-			rm -rf $(OBJ_DIR) $(NAME)
-			make clean -C $(LIBFT_DIR)
+			@rm -rf $(OBJ_DIR) && echo "$(RED)push_swap object files deleted.$(RESET)"
+			@rm -rf $(BONUS_OBJ_DIR) && echo "$(RED)checker object files deleted.$(RESET)"
+			@make clean -C $(LIBFT_DIR)
 
-fclean:		clean
-			rm -rf $(OBJ_DIR) $(BONUS_OBJ_DIR) $(BONUS_NAME)
-			make fclean -C $(LIBFT_DIR)
+fclean:
+			@rm -rf $(OBJ_DIR) $(NAME) $(BONUS_OBJ_DIR) $(BONUS_NAME) && echo "$(RED)push_swap deleted.\nchecker deleted.$(RESET)"
+			@make fclean -C $(LIBFT_DIR)
 
 re:			fclean all
 

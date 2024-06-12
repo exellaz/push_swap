@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 01:05:07 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/04 13:44:04 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:27:06 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,6 @@ void	stack_to_array(t_stack *stack, int *array)
 		i++;
 	}
 }
-// int	partition(int *array, int low, int high)
-// {
-// 	int	pivot;
-// 	int	i;
-// 	int	j;
-
-// 	pivot = array[low];
-// 	i = low + 1;
-// 	j = high;
-// 	while (i <= j)
-// 	{
-// 		while (array[i] < pivot)
-// 			i++;
-// 		while (array[j] > pivot)
-// 			j--;
-// 		if (i <= j)
-// 		{
-// 			ft_swap(&array[i], &array[j]);
-// 			i++;
-// 			j--;
-// 		}
-// 	}
-// 	ft_swap(&array[low], &array[j]);
-// 	return (j);
-// }
 
 int	partition(int *array, int low, int high)
 {

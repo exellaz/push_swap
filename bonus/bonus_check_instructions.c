@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_instructions.c                               :+:      :+:    :+:   */
+/*   bonus_check_instructions.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 20:20:20 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/05 17:10:09 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/06/12 20:15:31 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	check_instructions(t_data *data)
 		temp = ft_strtrim(instruction, "\n");
 		error = do_operation(data, temp);
 		free(temp);
+		free(instruction);
 		if (error != 0)
 			return ;
-		free(instruction);
 		instruction = get_next_line(STDIN_FILENO);
 	}
 	if (is_sorted(data->a) && data->size_b == 0)
@@ -60,6 +60,6 @@ int	do_operation(t_data *data, char *op)
 	else if (ft_strcmp(op, "pb") == 0)
 		pb(data);
 	else
-		return (ft_printf("Invalid Instruction\n"));
+		return (write(2, "Error\n", 7));
 	return (0);
 }

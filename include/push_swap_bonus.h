@@ -6,7 +6,7 @@
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:37 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/02/05 16:29:16 by kkhai-ki         ###   ########.fr       */
+/*   Updated: 2024/06/12 20:11:33 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	pa(t_data *data);
 void	pb(t_data *data);
 
 /*Free*/
-void	free_all(t_data *data);
 void	free_stack(t_stack *stack);
 void	free_arrays(char **array);
 

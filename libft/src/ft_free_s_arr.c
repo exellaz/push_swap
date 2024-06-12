@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_free.c                                       :+:      :+:    :+:   */
+/*   ft_free_s_arr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 13:36:47 by kkhai-ki          #+#    #+#             */
-/*   Updated: 2024/06/12 20:11:58 by kkhai-ki         ###   ########.fr       */
+/*   Created: 2024/03/17 21:16:25 by kkhai-ki          #+#    #+#             */
+/*   Updated: 2024/03/17 21:23:13 by kkhai-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_bonus.h"
+#include "libft.h"
 
-void	free_stack(t_stack *stack)
+void	ft_free_s_arr(char **arr)
 {
-	t_stack	*current;
-	t_stack	*next;
+	char	**tmp;
 
-	current = stack;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	stack = NULL;
-}
-
-void	free_arrays(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
+	tmp = arr;
+	while (*tmp != 0)
+		free(*(tmp++));
+	free(arr);
 }

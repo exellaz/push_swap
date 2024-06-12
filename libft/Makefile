@@ -6,11 +6,17 @@
 #    By: kkhai-ki <kkhai-ki@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 17:12:39 by kkhai-ki          #+#    #+#              #
-#    Updated: 2024/03/05 16:09:03 by kkhai-ki         ###   ########.fr        #
+#    Updated: 2024/06/12 18:01:29 by kkhai-ki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+
+# COLORS
+GREEN = \033[0;32m
+RED = \033[0;31m
+RESET = \033[0m
+ORANGE = \033[0;38;5;166m
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -I
@@ -75,7 +81,9 @@ SRC_FILES =	ft_isalpha			\
 			ft_parse_flags		\
 			ft_printf			\
 			get_next_line_utils	\
-			get_next_line
+			get_next_line		\
+			ft_free_s_arr		\
+			ft_atoi_base
 
 SRC = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC_FILES)))
 
@@ -83,20 +91,21 @@ OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(SRC_FILES)))
 
 $(OBJ_DIR)/%.o:		$(SRC_DIR)/%.c
-					$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+					@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME) : 	$(OBJ_DIR) $(OBJ)
-			ar rcs $@ $(OBJ)
+$(NAME) :	$(OBJ_DIR) $(OBJ)
+			@echo "$(GREEN)libft object files created.$(RESET)"
+			@ar rcs $@ $(OBJ) && echo "$(GREEN)libft.a created.$(RESET)"
 
 $(OBJ_DIR) :
-			mkdir -p $(OBJ_DIR)
+			@mkdir -p $(OBJ_DIR)
 
 all :		$(NAME)
 
 clean :
-			rm -rf $(OBJ_DIR)
+			@rm -rf $(OBJ_DIR) && echo "$(RED)libft object files deleted.$(RESET)"
 
 fclean:		clean
-			rm -rf $(NAME)
+			@rm -rf $(NAME) && echo "$(RED)libft.a deleted.$(RESET)"
 
 re:			fclean all
